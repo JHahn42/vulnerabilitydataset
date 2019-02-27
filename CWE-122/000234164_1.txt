@@ -1,0 +1,39 @@
+#include "std_testcase.h"
+
+namespace var1
+{
+
+
+
+static void func1(double * &data)
+{
+    data = (double *)malloc(sizeof(data));
+    if (data == NULL) {exit(-1);}
+    *data = 1.7E300;
+}
+
+void func2()
+{
+    double * data;
+    data = NULL;
+    func1(data);
+    printDoubleLine(*data);
+    free(data);
+}
+
+} 
+
+
+
+using namespace var1; 
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func2();
+    printLine("Finished");
+    return 0;
+}
+

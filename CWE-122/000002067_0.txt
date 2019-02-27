@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+#define BUFSIZE 32
+
+void tester (const char *__str) {
+	char *test = new (nothrow) char[BUFSIZE+1];
+	if (test!= 0)
+	{test[strlen(__str)%BUFSIZE]='a';
+	delete [] test;}
+	else cout << "Error: memory could not be allocated";
+	return;
+}
+
+int main(int argc, const char *argv[])
+{
+	if (argc > 1){
+		const char *userstr=argv[1];
+		tester(userstr);
+	}
+	return 0;
+}

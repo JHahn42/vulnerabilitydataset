@@ -1,0 +1,41 @@
+#include "std_testcase.h"
+
+static const int STATIC_CONST_FIVE = 5;
+
+namespace var1
+{
+
+
+
+void func1()
+{
+    int64_t * data;
+    data = NULL;
+    if(STATIC_CONST_FIVE==5)
+    {
+        data = new int64_t[50];
+    }
+    {
+        int64_t source[100] = {0}; 
+        memmove(data, source, 100*sizeof(int64_t));
+        printLongLongLine(data[0]);
+        delete [] data;
+    }
+}
+
+} 
+
+
+
+using namespace var1; 
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func1();
+    printLine("Finished");
+    return 0;
+}
+

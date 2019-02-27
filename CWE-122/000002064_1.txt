@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+typedef char * cptr;
+
+int main(int argc, const char *argv[])
+{
+	cptr buf[3] = {"a","b","c"};
+	buf[2] = new (nothrow) char[5*sizeof(char)];
+	if (buf[2] == 0)
+    		cout << "Error: memory could not be allocated";
+	else 
+		{if (argc > 1)
+		buf[2][strlen(argv[1])-1]='a';
+		delete [] buf[2];}
+	return 0;
+}

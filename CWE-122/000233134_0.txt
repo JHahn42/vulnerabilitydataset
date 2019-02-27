@@ -1,0 +1,40 @@
+#include "std_testcase.h"
+
+
+
+void func3(int * data)
+{
+    {
+        int source[100] = {0}; 
+        memmove(data, source, 100*sizeof(int));
+        printIntLine(data[0]);
+        free(data);
+    }
+}
+
+static void func4()
+{
+    int * data;
+    data = NULL;
+    data = (int *)malloc(100*sizeof(int));
+    if (data == NULL) {exit(-1);}
+    func3(data);
+}
+
+void func5()
+{
+    func4();
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func5();
+    printLine("Finished");
+    return 0;
+}
+

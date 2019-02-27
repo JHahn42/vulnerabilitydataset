@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+#define BUFSIZE 32
+
+int main() {
+	char *buf;
+	buf = new (nothrow) char[BUFSIZE];
+	if (buf != 0)
+		{buf[30]='a';
+		delete [] buf;}
+	else cout << "Error: memory could not be allocated";
+ 
+	return 0;
+}

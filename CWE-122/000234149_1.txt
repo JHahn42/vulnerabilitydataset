@@ -1,0 +1,36 @@
+#include "std_testcase.h"
+
+
+
+void func1()
+{
+    double * data;
+    data = NULL;
+    if(globalReturnsTrueOrFalse())
+    {
+        data = (double *)malloc(sizeof(data));
+        if (data == NULL) {exit(-1);}
+        *data = 1.7E300;
+    }
+    else
+    {
+        data = (double *)malloc(sizeof(*data));
+        if (data == NULL) {exit(-1);}
+        *data = 1.7E300;
+    }
+    printDoubleLine(*data);
+    free(data);
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func1();
+    printLine("Finished");
+    return 0;
+}
+

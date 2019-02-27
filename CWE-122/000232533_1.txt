@@ -1,0 +1,38 @@
+#include "std_testcase.h"
+
+#ifndef _WIN32
+#include <wchar.h>
+#endif
+
+#define SRC_STRING "AAAAAAAAAA"
+
+
+
+void func1()
+{
+    char * data;
+    data = NULL;
+    goto source;
+source:
+    data = (char *)malloc(10*sizeof(char));
+    if (data == NULL) {exit(-1);}
+    {
+        char source[10+1] = SRC_STRING;
+        memmove(data, source, (strlen(source) + 1) * sizeof(char));
+        printLine(data);
+        free(data);
+    }
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func1();
+    printLine("Finished");
+    return 0;
+}
+

@@ -1,0 +1,38 @@
+#include "std_testcase.h"
+
+
+
+static int64_t * func3(int64_t * data)
+{
+    data = (int64_t *)malloc(sizeof(*data));
+    if (data == NULL) {exit(-1);}
+    *data = 2147483643LL;
+    return data;
+}
+
+static void func4()
+{
+    int64_t * data;
+    data = NULL;
+    data = func3(data);
+    printLongLongLine(*data);
+    free(data);
+}
+
+void func5()
+{
+    func4();
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func5();
+    printLine("Finished");
+    return 0;
+}
+

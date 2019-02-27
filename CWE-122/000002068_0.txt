@@ -1,0 +1,23 @@
+#include <iostream>
+#include <exception>
+using namespace std;
+
+
+
+typedef char * cptr;
+
+int main()
+{
+	cptr buf[3] = {"a","b","c"};
+	
+	try {buf[2] = new char[5*sizeof(char)];}
+
+	catch (var1&)
+	{
+	  cout << "Error allocating memory." << endl;
+	  return 0;
+	}
+	buf[2][1]='a';
+	delete [] buf[2];
+	return 0;
+}

@@ -1,0 +1,44 @@
+#include "std_testcase.h"
+
+namespace var1
+{
+
+
+
+void func1()
+{
+    int * data;
+    data = NULL;
+    switch(6)
+    {
+    case 6:
+        data = new int[50];
+        break;
+    default:
+        printLine("Benign, fixed string");
+        break;
+    }
+    {
+        int source[100] = {0}; 
+        memmove(data, source, 100*sizeof(int));
+        printIntLine(data[0]);
+        delete [] data;
+    }
+}
+
+} 
+
+
+
+using namespace var1; 
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func1();
+    printLine("Finished");
+    return 0;
+}
+

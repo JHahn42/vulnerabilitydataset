@@ -1,0 +1,47 @@
+#include "std_testcase.h"
+
+#ifndef _WIN32
+#include <wchar.h>
+#endif
+
+#define SRC_STRING "AAAAAAAAAA"
+
+namespace var1
+{
+
+
+
+void func1(char * &data)
+{
+    data = new char[10];
+}
+
+void func2()
+{
+    char * data;
+    data = NULL;
+    func1(data);
+    {
+        char source[10+1] = SRC_STRING;
+        strcpy(data, source);
+        printLine(data);
+        delete [] data;
+    }
+}
+
+} 
+
+
+
+using namespace var1; 
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func2();
+    printLine("Finished");
+    return 0;
+}
+

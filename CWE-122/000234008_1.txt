@@ -1,0 +1,39 @@
+#include "std_testcase.h"
+
+#include <wchar.h>
+
+
+
+static void func1(char * data)
+{
+    {
+        char dest[50] = "";
+        strcat(dest, data);
+        printLine(data);
+        free(data);
+    }
+}
+
+void func2()
+{
+    char * data;
+    void (*funcPtr) (char *) = func1;
+    data = (char *)malloc(100*sizeof(char));
+    if (data == NULL) {exit(-1);}
+    memset(data, 'A', 100-1); 
+    data[100-1] = '\0'; 
+    funcPtr(data);
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func2();
+    printLine("Finished");
+    return 0;
+}
+

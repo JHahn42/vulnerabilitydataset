@@ -1,0 +1,41 @@
+#include "std_testcase.h"
+
+namespace var1
+{
+
+
+
+static void func2()
+{
+    int64_t * data;
+    data = NULL;
+    data = new int64_t[100];
+    {
+        int64_t source[100] = {0}; 
+        memcpy(data, source, 100*sizeof(int64_t));
+        printLongLongLine(data[0]);
+        delete [] data;
+    }
+}
+
+void func3()
+{
+    func2();
+}
+
+} 
+
+
+
+using namespace var1; 
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func3();
+    printLine("Finished");
+    return 0;
+}
+

@@ -1,0 +1,39 @@
+#include "std_testcase.h"
+
+
+
+static void func2()
+{
+    int h;
+    int * data;
+    data = NULL;
+    for(h = 0; h < 1; h++)
+    {
+        data = (int *)malloc(100*sizeof(int));
+        if (data == NULL) {exit(-1);}
+    }
+    {
+        int source[100] = {0}; 
+        memcpy(data, source, 100*sizeof(int));
+        printIntLine(data[0]);
+        free(data);
+    }
+}
+
+void func3()
+{
+    func2();
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func3();
+    printLine("Finished");
+    return 0;
+}
+
