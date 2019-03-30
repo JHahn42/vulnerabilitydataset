@@ -1,0 +1,46 @@
+
+
+#include <wchar.h>
+
+
+
+void func1(char * data)
+{
+    {
+        char dest[50] = "";
+        strcat(dest, data);
+        printLine(data);
+        free(data);
+    }
+}
+
+
+
+#include <wchar.h>
+
+
+
+void func1(char * data);
+
+void func3()
+{
+    char * data;
+    void (*funcPtr) (char *) = func1;
+    data = (char *)malloc(100*sizeof(char));
+    memset(data, 'A', 100-1); 
+    data[100-1] = '\0'; 
+    funcPtr(data);
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func3();
+    printLine("Finished");
+    return 0;
+}
+

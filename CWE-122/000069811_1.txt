@@ -1,0 +1,45 @@
+
+
+
+
+void func1(int * * dataPtr)
+{
+    int * data = *dataPtr;
+    {
+        int source[10] = {0};
+        size_t i;
+        for (i = 0; i < 10; i++)
+        {
+            data[i] = source[i];
+        }
+        printIntLine(data[0]);
+        free(data);
+    }
+}
+
+
+
+
+
+void func1(int * * dataPtr);
+
+void func3()
+{
+    int * data;
+    data = NULL;
+    data = (int *)malloc(10);
+    func1(&data);
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func3();
+    printLine("Finished");
+    return 0;
+}
+

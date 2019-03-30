@@ -1,0 +1,43 @@
+
+
+
+
+void func1(int * dataArray[])
+{
+    int * data = dataArray[2];
+    {
+        int source[10] = {0};
+        memcpy(data, source, 10*sizeof(int));
+        printIntLine(data[0]);
+        free(data);
+    }
+}
+
+
+
+
+
+void func1(int * dataArray[]);
+
+void func3()
+{
+    int * data;
+    int * dataArray[5];
+    data = NULL;
+    data = (int *)malloc(10);
+    dataArray[2] = data;
+    func1(dataArray);
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func3();
+    printLine("Finished");
+    return 0;
+}
+

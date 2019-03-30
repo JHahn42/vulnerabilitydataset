@@ -1,0 +1,47 @@
+
+
+
+
+extern int var1;
+
+int64_t * func1(int64_t * data)
+{
+    if(var1)
+    {
+        data = (int64_t *)malloc(sizeof(data));
+        if (data == NULL) {exit(-1);}
+        *data = 2147483643LL;
+    }
+    return data;
+}
+
+
+
+
+
+int var1 = 0;
+
+int64_t * func1(int64_t * data);
+
+void func4()
+{
+    int64_t * data;
+    data = NULL;
+    var1 = 1; 
+    data = func1(data);
+    printLongLongLine(*data);
+    free(data);
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func4();
+    printLine("Finished");
+    return 0;
+}
+

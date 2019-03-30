@@ -1,0 +1,44 @@
+
+
+
+
+double * func2(double * data)
+{
+    data = (double *)malloc(sizeof(*data));
+    if (data == NULL) {exit(-1);}
+    *data = 1.7E300;
+    return data;
+}
+
+
+
+
+
+double * func2(double * data);
+
+static void func4()
+{
+    double * data;
+    data = NULL;
+    data = func2(data);
+    printDoubleLine(*data);
+    free(data);
+}
+
+void func5()
+{
+    func4();
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func5();
+    printLine("Finished");
+    return 0;
+}
+

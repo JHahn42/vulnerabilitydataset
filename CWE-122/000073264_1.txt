@@ -1,0 +1,40 @@
+
+
+
+
+void func1(double * dataArray[])
+{
+    double * data = dataArray[2];
+    printDoubleLine(*data);
+    free(data);
+}
+
+
+
+
+
+void func1(double * dataArray[]);
+
+void func3()
+{
+    double * data;
+    double * dataArray[5];
+    data = NULL;
+    data = (double *)malloc(sizeof(data));
+    *data = 1.7E300;
+    dataArray[2] = data;
+    func1(dataArray);
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func3();
+    printLine("Finished");
+    return 0;
+}
+

@@ -1,0 +1,48 @@
+
+
+namespace GenNS1
+{
+
+
+
+void func1(int64_t * &data)
+{
+    data = (int64_t *)malloc(sizeof(data));
+    if (data == NULL) {exit(-1);}
+    *data = 2147483643LL;
+}
+
+} 
+
+namespace GenNS1
+{
+
+
+
+void func1(int64_t * &data);
+
+void func3()
+{
+    int64_t * data;
+    data = NULL;
+    func1(data);
+    printLongLongLine(*data);
+    free(data);
+}
+
+} 
+
+
+
+using namespace GenNS1; 
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func3();
+    printLine("Finished");
+    return 0;
+}
+

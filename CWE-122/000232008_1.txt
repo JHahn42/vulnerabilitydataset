@@ -1,0 +1,46 @@
+
+
+
+
+int * func1(int * data)
+{
+    data = (int *)malloc(10);
+    if (data == NULL) {exit(-1);}
+    return data;
+}
+
+
+
+
+
+int * func1(int * data);
+
+void func3()
+{
+    int * data;
+    data = NULL;
+    data = func1(data);
+    {
+        int source[10] = {0};
+        size_t i;
+        for (i = 0; i < 10; i++)
+        {
+            data[i] = source[i];
+        }
+        printIntLine(data[0]);
+        free(data);
+    }
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func3();
+    printLine("Finished");
+    return 0;
+}
+

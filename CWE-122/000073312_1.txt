@@ -1,0 +1,40 @@
+
+
+
+
+void func1(int64_t * dataArray[])
+{
+    int64_t * data = dataArray[2];
+    printLongLongLine(*data);
+    free(data);
+}
+
+
+
+
+
+void func1(int64_t * dataArray[]);
+
+void func3()
+{
+    int64_t * data;
+    int64_t * dataArray[5];
+    data = NULL;
+    data = (int64_t *)malloc(sizeof(data));
+    *data = 2147483643LL;
+    dataArray[2] = data;
+    func1(dataArray);
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func3();
+    printLine("Finished");
+    return 0;
+}
+

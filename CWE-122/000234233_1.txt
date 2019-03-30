@@ -1,0 +1,40 @@
+
+
+
+
+twoIntsStruct * func1(twoIntsStruct * data)
+{
+    data = (twoIntsStruct *)malloc(sizeof(data));
+    if (data == NULL) {exit(-1);}
+    data->intOne = 1;
+    data->intTwo = 2;
+    return data;
+}
+
+
+
+
+
+twoIntsStruct * func1(twoIntsStruct * data);
+
+void func3()
+{
+    twoIntsStruct * data;
+    data = NULL;
+    data = func1(data);
+    printStructLine(data);
+    free(data);
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func3();
+    printLine("Finished");
+    return 0;
+}
+

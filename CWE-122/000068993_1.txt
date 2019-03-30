@@ -1,0 +1,51 @@
+
+
+namespace GenNS1
+{
+
+
+
+int * func1(int * data)
+{
+    data = new int[50];
+    return data;
+}
+
+} 
+
+namespace GenNS1
+{
+
+
+
+int * func1(int * data);
+
+void func3()
+{
+    int * data;
+    data = NULL;
+    data = func1(data);
+    {
+        int source[100] = {0}; 
+        memmove(data, source, 100*sizeof(int));
+        printIntLine(data[0]);
+        delete [] data;
+    }
+}
+
+} 
+
+
+
+using namespace GenNS1; 
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func3();
+    printLine("Finished");
+    return 0;
+}
+

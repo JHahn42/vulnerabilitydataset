@@ -1,0 +1,43 @@
+
+
+
+
+void func2(int64_t * * dataPtr)
+{
+    int64_t * data = *dataPtr;
+    printLongLongLine(*data);
+    free(data);
+}
+
+
+
+
+
+void func2(int64_t * * data);
+
+static void func4()
+{
+    int64_t * data;
+    data = NULL;
+    data = (int64_t *)malloc(sizeof(*data));
+    *data = 2147483643LL;
+    func2(&data);
+}
+
+void func5()
+{
+    func4();
+}
+
+
+
+int main(int argc, char * argv[])
+{
+    srand( (unsigned)time(NULL) );
+
+    printLine("Calling ...");
+    func5();
+    printLine("Finished");
+    return 0;
+}
+
